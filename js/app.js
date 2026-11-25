@@ -1095,13 +1095,15 @@ function initGlobalControls() {
     showToast(next === 'light' ? '☀️ Daylight Studio theme' : '🌙 Obsidian Kinetic theme');
   });
 
-  // Audio Cues Toggle
+  // Audio Cues Toggle (optional if control is present)
   const soundBtn = document.getElementById('sound-toggle');
-  soundBtn.addEventListener('click', () => {
-    const on = sound.toggle();
-    soundBtn.textContent = on ? '🔊' : '🔇';
-    showToast(on ? '🔊 Tactile protocol audio enabled' : '🔇 Audio muted');
-  });
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      const on = sound.toggle();
+      soundBtn.textContent = on ? '🔊' : '🔇';
+      showToast(on ? '🔊 Tactile protocol audio enabled' : '🔇 Audio muted');
+    });
+  }
 
   // Glossary Modal Triggers
   document.getElementById('open-glossary-btn').addEventListener('click', () => openGlossary());
